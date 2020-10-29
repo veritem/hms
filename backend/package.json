@@ -14,7 +14,9 @@
     "nodemon": "^2.0.6",
     "prettier": "^2.1.2"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "eslint": "^7.12.1"
+  },
   "scripts": {
     "start": "NODE_ENV=production node server",
     "dev": "nodemon server"
