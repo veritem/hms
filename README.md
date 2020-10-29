@@ -4,11 +4,13 @@
 
 
 
-#### Tech stack
+### Tech stack
 
 - Nodejs / Expressjs
+
 - MongoDB
-= Reactjs
+
+- Reactjs
 
 > Running the app localy do
 
@@ -16,9 +18,7 @@
 ```bash
    git clone https://github.com/makuzaverite/hms.git
 
-
    cd backend
-
 
    npm i
 
