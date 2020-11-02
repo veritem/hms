@@ -3,9 +3,13 @@ const dotenv = require('dotenv')
 const morgan = require('morgan')
 const connectDB = require('./config/db')
 const colors = require('colors')
+const errorHandler = require('./middleware/error')
 const app = express()
 
 dotenv.config({ path: './config/config.env' })
+
+//api routes
+const users = require('./routes/users')
 
 // connect to the database
 connectDB()
@@ -25,6 +29,12 @@ const server = app.listen(PORT, () => {
       .green
   )
 })
+
+// give api endpoints to routes
+app.use('/api/v1/users', users)
+
+//for error hadnling
+app.use(errorHandler)
 
 process.on('unhandledRejection', (err, promise) => {
   console.log(`Error: ${err.message}`.red)
