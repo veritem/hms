@@ -1,19 +1,15 @@
 const mongoose = require('mongoose')
 
-const customerSchema = new mongoose.Schema({
-    customer_names: {
-        type: String,
+const employeeSchema = new mongoose.Schema({
+    employee_names: {
+        type: string,
         require: [true, 'Please name is required']
     },
-    cutomer_phone_number: {
-        type: Number,
+    employee_phone_nbr: {
+        type: number,
         require: [true, 'Please phone number is required']
     },
-    customer_location: {
-        type: Number,
-        require: [true, "Please customer location is required                                                                                "]
-    },
-    customer_email: {
+    employee_email: {
         type: String,
         required: [true, 'Please add an email'],
         unique: true,
@@ -22,24 +18,33 @@ const customerSchema = new mongoose.Schema({
             'Please add a valid email'
         ]
     },
-    customer_password: {
+    employee_password: {
         type: String,
         require: [true, 'Please add a password']
     },
-    customer_gender: {
+    employee_role: {
+        type: String,
+        require: [true, "Please add an employee"]
+    },
+    employee_gender: {
         type: String,
         require: [true, "Please add an employee gender"]
     },
-    customer_national_id: {
-        type: String,
+    employee_national_id: {
+        type: string,
         require: [true, "Please add a national id "]
     },
     createdAt: {
         type: Date,
         default: Date.now
+    },
+    status: {
+        type: String,
+        enum: ['ACTIVE', 'INACTIVE', 'PENDING'],
+        default: 'ACTIVE'
     }
 })
 
 
-module.exports = mongoose.model('Customer',
-    customerSchema);
+module.exports = mongoose.model('Employee',
+    employeeSchema);
