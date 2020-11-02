@@ -10,7 +10,7 @@ const customerSchema = new mongoose.Schema({
         require: [true, 'Please phone number is required']
     },
     customer_location: {
-        type: Number,
+        type: String,
         require: [true, "Please customer location is required                                                                                "]
     },
     customer_email: {

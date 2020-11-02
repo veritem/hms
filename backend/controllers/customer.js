@@ -38,3 +38,6 @@ let insertCustomer = (req, res) => {
         .then(customerSaved => res.send(customerSaved).status(201))
         .catch(err => res.send(err).status(400))
 }
+let updateCustomer = (req, res) => {
+
+}
