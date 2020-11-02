@@ -1,15 +1,16 @@
-const express = require('express')
-const dotenv = require('dotenv')
-const morgan = require('morgan')
-const connectDB = require('./config/db')
-const colors = require('colors')
-const errorHandler = require('./middleware/error')
+import express from 'express'
+import dotenv from 'dotenv'
+import morgan from 'morgan'
+import connectDB from './config/db'
+import colors from 'colors'
+import errorHandler from './middleware/error'
+
 const app = express()
 
 dotenv.config({ path: './config/config.env' })
 
 //api routes
-const users = require('./routes/users')
+import users from './routes/users'
 
 // connect to the database
 connectDB()
