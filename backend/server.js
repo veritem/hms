@@ -19,7 +19,8 @@ const swaggerOptions = {
       version: '1.0.0',
     },
   },
-  apis: ['server.js'],
+  apis: ['routes/*.js'],
+  basePath: '/v1',
 }
 
 const swaggerDocs = swaggerJSdoc(swaggerOptions)
@@ -47,7 +48,6 @@ const server = app.listen(PORT, () => {
   )
 })
 
-// give api endpoints to routes
 app.use('/api/v1/users', users)
 
 //for error hadnling
