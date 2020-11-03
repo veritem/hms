@@ -5,6 +5,16 @@ const asyncHandler = require('../middleware/async')
  * Getting all users
  * GET /api/v1/users
  */
+
+/**
+ * @swagger
+ * /users:
+ *  get:
+ *    description: Use to request all users
+ *    responses:
+ *      '200':
+ *        description: A successful response
+ */
 exports.getUsers = asyncHandler(async (req, res) => {
   const users = await User.find()
   res.status(200).json({ success: true, data: users })
@@ -51,7 +61,7 @@ exports.updateUser = asyncHandler(async (req, res) => {
  * DELETE /api/v1/users/:id
  */
 exports.deleteUser = asyncHandler(async (req, res) => {
-  const user = await User.findByIdAndDelete(req.params.id)
+  await User.findByIdAndDelete(req.params.id)
 
   res.status(200).json({
     success: true,

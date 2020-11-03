@@ -1,8 +1,8 @@
-import mongoose from 'mongoose'
+import mongoose, { Schema } from 'mongoose'
 import jwt from 'jsonwebtoken'
 import bcrypt from 'bcrypt'
 
-const userShema = new mongoose.Schema({
+const userShema = new Schema({
   firstName: {
     type: String,
     require: [true, 'Please first name is required'],
@@ -23,6 +23,11 @@ const userShema = new mongoose.Schema({
   phone: {
     type: String,
     required: [true, 'Please add phone number'],
+  },
+  gender: {
+    type: String,
+    required: [true, 'Gender is required'],
+    enum: ['Male', 'Female'],
   },
   role: {
     type: String,
@@ -81,4 +86,5 @@ userShema.methods.matchPasswords = async function (enteredPassword) {
   return await bcrypt.compare(enteredPassword, this.password)
 }
 
+// export default mongoose.model('User', userShema)
 module.exports = mongoose.model('User', userShema)
