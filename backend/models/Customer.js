@@ -3,15 +3,15 @@ const mongoose = require('mongoose')
 const customerSchema = new mongoose.Schema({
     customer_names: {
         type: String,
-        require: [true, 'Please name is required']
+        required: [true, 'Please name is required']
     },
-    cutomer_phone_number: {
+    customer_phone_number: {
         type: Number,
-        require: [true, 'Please phone number is required']
+        required: [true, 'Please phone number is required']
     },
     customer_location: {
         type: String,
-        require: [true, "Please customer location is required                                                                                "]
+        required: [true, "Please customer location is required                                                                                "]
     },
     customer_email: {
         type: String,
@@ -24,7 +24,7 @@ const customerSchema = new mongoose.Schema({
     },
     customer_password: {
         type: String,
-        require: [true, 'Please add a password']
+        required: [true, 'Please add a password']
     },
     customer_gender: {
         type: String,
@@ -32,11 +32,16 @@ const customerSchema = new mongoose.Schema({
     },
     customer_national_id: {
         type: String,
-        require: [true, "Please add a national id "]
+        required: [true, "Please add a national id "]
     },
     createdAt: {
         type: Date,
         default: Date.now
+    },
+    customer_status: {
+        type: String,
+        enum: ['ACTIVE,INACTIVE'],
+        default: 'ACTIVE'
     }
 })
 

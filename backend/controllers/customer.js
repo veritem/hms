@@ -33,7 +33,7 @@ let insertCustomer = (req, res) => {
     customer.customer_email = req.body.customer_email;
     customer.customer_password = req.body.customer_password;
     customer.customer_gender = req.body.customer_gender;
-    customer.customer_national_id = req.body.createdAt;
+    customer.customer_national_id = req.body.customer_national_id;
     customer.save()
         .then(customerSaved => res.send(customerSaved).status(201))
         .catch(err => res.send(err).status(400))
