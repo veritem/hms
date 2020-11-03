@@ -20,7 +20,6 @@ const swaggerOptions = {
     },
   },
   apis: ['routes/*.js'],
-  basePath: '/v1',
 }
 
 const swaggerDocs = swaggerJSdoc(swaggerOptions)

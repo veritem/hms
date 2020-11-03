@@ -24,6 +24,11 @@ const userShema = new Schema({
     type: String,
     required: [true, 'Please add phone number'],
   },
+  gender: {
+    type: String,
+    required: [true, 'Gender is required'],
+    enum: ['Male', 'Female'],
+  },
   role: {
     type: String,
     enum: [
