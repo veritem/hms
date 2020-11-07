@@ -88,5 +88,4 @@ userShema.methods.matchPasswords = async function (enteredPassword) {
   return await bcrypt.compare(enteredPassword, this.password)
 }
 
-// export default mongoose.model('User', userShema)
 module.exports = mongoose.model('User', userShema)
