@@ -84,9 +84,8 @@ userShema.methods.createToken = function () {
  * This will called in code
  */
 
-userShema.methods.matchPasswords = async function (enteredPassword) {
+userShema.methods.matchPassowords = async function (enteredPassword) {
   return await bcrypt.compare(enteredPassword, this.password)
 }
 
-// export default mongoose.model('User', userShema)
 module.exports = mongoose.model('User', userShema)
