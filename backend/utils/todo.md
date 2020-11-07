@@ -1,12 +1,12 @@
-### Our daily Task Managments
+### Project Roadmap
 
-- User authentication
-
-
-Incoming tasks
-
-- Rooms booking Managments
-- Stock management
-- Service Payment Proccess and Managments
-- User reviews Managment
-- Hotels properties Managment
+- [ ] User authentication
+- [ ] Rooms booking Managments
+    - [ ]
+- [ ] customber recording on entrance
+- [ ] Stock management
+    - [ ]
+- [ ] Service Payment Proccessing and Managments
+- [ ] User reviews Managment
+- [ ] Hotels properties Managment
+- [ ] Employees management
