@@ -1,6 +1,7 @@
 import ErrorResponse from '../utils/ErrorResponse'
 import asyncHandler from '../middleware/async'
-import User from '../models/User'
+const User = require('../models/User')
+// import User from '../models/User'
 
 /**
  * POST
@@ -32,7 +33,7 @@ exports.login = asyncHandler(async (req, res, next) => {
   if (!user) return next(new ErrorResponse('Invalid email or password', 401))
 
   // check if password matches
-  const isMatch = await User.matchPassowords(password)
+  const isMatch = await user.matchPassowords(password)
 
   if (!isMatch) return next(new ErrorResponse('Invalid email or password', 401))
 
@@ -41,10 +42,9 @@ exports.login = asyncHandler(async (req, res, next) => {
 
 //get currentloggedin user
 exports.getMe = asyncHandler(async (req, res, next) => {
-  const user = await user.findById(req.user.id)
   res.status(200).json({
     success: true,
-    data: user,
+    data: req.user,
   })
 })
 
@@ -55,6 +55,6 @@ exports.getMe = asyncHandler(async (req, res, next) => {
  * @param { json_response to the user} res
  */
 const sendTokenResponse = (user, statusCode, res) => {
-  const token = User.createToken()
-  res.status(200).json({ success: true, token })
+  const token = user.createToken()
+  res.status(statusCode).json({ success: true, token })
 }

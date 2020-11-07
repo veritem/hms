@@ -84,7 +84,7 @@ userShema.methods.createToken = function () {
  * This will called in code
  */
 
-userShema.methods.matchPasswords = async function (enteredPassword) {
+userShema.methods.matchPassowords = async function (enteredPassword) {
   return await bcrypt.compare(enteredPassword, this.password)
 }
 
