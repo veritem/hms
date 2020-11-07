@@ -5,13 +5,29 @@ import connectDB from './config/db'
 import colors from 'colors'
 import errorHandler from './middleware/error'
 
+import swaggerJSdoc from 'swagger-jsdoc'
+import swaggerUI from 'swagger-ui-express'
+
 const app = express()
 
 dotenv.config({ path: './config/config.env' })
 
+const swaggerOptions = {
+  swaggerDefinition: {
+    info: {
+      title: 'HMS API',
+      version: '1.0.0',
+    },
+  },
+  apis: ['routes/*.js'],
+}
+
+const swaggerDocs = swaggerJSdoc(swaggerOptions)
+app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocs))
+
 //api routes
 import users from './routes/users'
-import customer from './routes/customer'
+import auth from './routes/auth'
 
 // connect to the database
 connectDB()
@@ -32,9 +48,15 @@ const server = app.listen(PORT, () => {
     )
 })
 
+<<<<<<< HEAD
 // give api endpoints to routes
 app.use('/api/v1/users', users);
 app.use('/api/v1/customers', customer);
+=======
+app.use('/api/v1/users', users)
+app.use('/api/v1/auth', auth)
+
+>>>>>>> 2e78a172781a19a505148049844b8e4d9fb4fe99
 //for error hadnling
 app.use(errorHandler)
 
