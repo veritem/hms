@@ -27,6 +27,7 @@ app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocs))
 
 //api routes
 import users from './routes/users'
+import auth from './routes/auth'
 
 // connect to the database
 connectDB()
@@ -48,6 +49,7 @@ const server = app.listen(PORT, () => {
 })
 
 app.use('/api/v1/users', users)
+app.use('/api/v1/auth', auth)
 
 //for error hadnling
 app.use(errorHandler)
