@@ -26,8 +26,10 @@ const swaggerDocs = swaggerJSdoc(swaggerOptions)
 app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocs))
 
 //api routes
-import users from './routes/users'
+import users, { post } from './routes/users'
 import auth from './routes/auth'
+import items from './routes/items'
+import postJob from './routes/job'
 
 // connect to the database
 connectDB()
@@ -47,16 +49,11 @@ const server = app.listen(PORT, () => {
         .green
     )
 })
-
-<<<<<<< HEAD
-// give api endpoints to routes
-app.use('/api/v1/users', users);
-app.use('/api/v1/customers', customer);
-=======
+app.use('/api/v1/items',items)
 app.use('/api/v1/users', users)
 app.use('/api/v1/auth', auth)
+app.use('/api/v1/postJob',postJob)
 
->>>>>>> 2e78a172781a19a505148049844b8e4d9fb4fe99
 //for error hadnling
 app.use(errorHandler)
 
