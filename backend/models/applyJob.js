@@ -1,6 +1,6 @@
 import mongoose, { Schema } from 'mongoose'
 
-const jobSchema = new Schema({
+const applyJobSchema = new Schema({
   first_name: {
     type: String,
     required: [true, 'Please insert a job name']
@@ -13,36 +13,17 @@ const jobSchema = new Schema({
     type: String,
     required: [true, 'Please add the industries field']
   },
-  employment_type: {
-    type: String,
-    enum: [
-      'full-time',
-      'part-time',
-      'casual',
-      'fixed-term',
-      'shift-workers',
-      'daily-hire-and-weekly-hire',
-      'probation',
-      'apprentices-and-trainees',
-      'out-workers'
-    ]
+  jobName: {
+
   },
   region: {
     type: String,
     required: [true,'Please add the region of the work']
   },
-  experience_level: {
+  cv : {
     type: String,
-    required: [true,'Please add the experience level']
-  },
-  education_level: {
-    type: String,
-    required: [true,'Please add the education level']
-  },
-  number_of_positions: {
-    type: String,
-    required: [true, 'Please add the number of positions']
+    data: Buffer
   }
 })
 
-module.exports = mongoose.model('Job', jobSchema)
+module.exports = mongoose.model('applyJob', applyJobSchema)

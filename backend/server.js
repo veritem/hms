@@ -4,7 +4,6 @@ import morgan from 'morgan'
 import connectDB from './config/db'
 import colors from 'colors'
 import errorHandler from './middleware/error'
-
 import swaggerJSdoc from 'swagger-jsdoc'
 import swaggerUI from 'swagger-ui-express'
 
@@ -30,6 +29,7 @@ import users, { post } from './routes/users'
 import auth from './routes/auth'
 import items from './routes/items'
 import postJob from './routes/job'
+import applyJob from './controllers/applyJob'
 
 // connect to the database
 connectDB()
@@ -52,6 +52,7 @@ const server = app.listen(PORT, () => {
 app.use('/api/v1/items',items)
 app.use('/api/v1/users', users)
 app.use('/api/v1/auth', auth)
+app.use('/api/v1/applyJob',applyJob)
 app.use('/api/v1/postJob',postJob)
 
 //for error hadnling
