@@ -30,6 +30,7 @@ import auth from './routes/auth'
 import items from './routes/items'
 import postJob from './routes/job'
 import applyJob from './controllers/applyJob'
+import applyJobInformation from './routes/applyJob'
 
 // connect to the database
 connectDB()
@@ -52,8 +53,9 @@ const server = app.listen(PORT, () => {
 app.use('/api/v1/items',items)
 app.use('/api/v1/users', users)
 app.use('/api/v1/auth', auth)
-app.use('/api/v1/applyJob',applyJob)
+app.use('/api/v1/applyJob',applyJob.router)
 app.use('/api/v1/postJob',postJob)
+app.use('/api/v1/applyJobInformation',applyJobInformation);
 
 //for error hadnling
 app.use(errorHandler)

@@ -1,15 +1,16 @@
-// const express = require('express')
-// const {
-//     getApplyJobs,
-//     createApplyJob,
-//     getApplyJob,
-//     updateApplyJob,
-//     deleteApplyJob,
-// } = require('../controllers/applyJob')
+const express = require('express')
+const {
+    createApplyJob,
+    getApplyJobs,
+    updateApplyJob,
+    deleteApplyJob,
+    getOneJobApply
+} = require('../controllers/applyJob')
 
-// const router = express.Router({ mergeParams: true })
+const router = express.Router({ mergeParams: true })
 
-// router.route('/').get(getApplyJobs).post(createApplyJob)
-// router.route('/:id').get(getApplyJob).put(updateApplyJob).delete(deleteApplyJob)
+router.route('/').get(getApplyJobs).post(createApplyJob)
 
-// module.exports = router
+router.route('/:id').get(getOneJobApply).put(updateApplyJob).delete(deleteApplyJob);
+
+module.exports = router

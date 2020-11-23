@@ -53,7 +53,6 @@ exports.updateItem = asyncHandler(async (req, res) => {
  */
 exports.deleteItem = asyncHandler(async (req, res) => {
   await Item.findByIdAndDelete(req.params.id)
-
   res.status(200).json({
     success: true,
     data: {},
