@@ -1,11 +1,11 @@
 const express = require('express')
 const {
-    getItems,
-    createItem,
-    getItem,
-    updateItem,
-    deleteItem,
-} = require('../controllers/Items')
+  getItems,
+  createItem,
+  getItem,
+  updateItem,
+  deleteItem,
+} = require('../controllers/items')
 
 const router = express.Router({ mergeParams: true })
 
@@ -14,7 +14,7 @@ const router = express.Router({ mergeParams: true })
  * definitions:
  *   Items:
  *     properties:
- *       itemName: 
+ *       itemName:
  *          type: string
  *       supplier_id:
  *         type: string
@@ -28,7 +28,7 @@ const router = express.Router({ mergeParams: true })
  *           - ACTIVE,
  *           - PENDING,
  *           - INACTIVE
-*
+ *
  */
 /**
  * @swagger
