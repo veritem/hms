@@ -1,10 +1,10 @@
 const express = require('express')
 const {
-  getUsers,
-  createUser,
-  getUser,
-  updateUser,
-  deleteUser,
+    getUsers,
+    createUser,
+    getUser,
+    updateUser,
+    deleteUser,
 } = require('../controllers/users')
 
 const router = express.Router({ mergeParams: true })
