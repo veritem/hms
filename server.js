@@ -50,6 +50,13 @@ const server = app.listen(PORT, () => {
       .green
   )
 })
+
+app.get('/', (req, res) => {
+  res.status(200).json({
+    success: true,
+    body: 'Welcome to hms v1',
+  })
+})
 app.use('/api/v1/items', items)
 app.use('/api/v1/users', users)
 app.use('/api/v1/auth', auth)
