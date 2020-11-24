@@ -5,9 +5,11 @@ const itemSchema = new Schema({
     type: String,
     required: [true, 'Please item name is required']
   },
-  supplier_id: {
-    type: String,
-    required: [true, 'Please supplier_id is required'],
+  supplier: {
+    type: mongoose.Schema.Types.ObjectId,
+		ref: 'User',
+		unique: true,
+		required: true,
   },
   itemType: {
     type: String,

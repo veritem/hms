@@ -10,5 +10,4 @@ const connectDb = async() => {
     })
     console.log(`MongoDb connected ${connection.connection.host}`.cyan.italic.underline.bold)
 }
-
 module.exports = connectDb
