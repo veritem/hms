@@ -14,7 +14,7 @@ dotenv.config({ path: './config/config.env' })
 const swaggerOptions = {
   swaggerDefinition: {
     info: {
-      title: 'HMS API',
+      title: 'HMS APIs',
       version: '1.0.0',
     },
   },
