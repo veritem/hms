@@ -1,10 +1,10 @@
 const express = require('express')
 const {
-    getJobs,
-    createJob,
-    getJob,
-    updateJob,
-    deleteJob,
+  getJobs,
+  createJob,
+  getJob,
+  updateJob,
+  deleteJob,
 } = require('../controllers/job')
 
 const router = express.Router({ mergeParams: true })
@@ -14,7 +14,7 @@ const router = express.Router({ mergeParams: true })
  * definitions:
  *   Jobs:
  *     properties:
- *       JobName: 
+ *       JobName:
  *         type: string
  *       jobCategory:
  *         type: string
@@ -32,9 +32,8 @@ const router = express.Router({ mergeParams: true })
  *       educational_level:
  *         type: string
  *       number_of_positions:
- *         type: string 
+ *         type: string
  */
-
 
 /**
  * @swagger
