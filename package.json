@@ -30,10 +30,7 @@
     "start": "babel-node server.js",
     "heroku-postbuild": "npm install",
     "dev": "nodemon server.js --exec babel-node"
-  },
-  "engines": {
-    "node": "10.x"
-  },
+  }, 
   "author": "Makuza Mugabo Verite & Denyse Mutoni Uwingeneye",
   "license": "MIT"
 }
