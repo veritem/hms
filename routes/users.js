@@ -42,8 +42,11 @@ const router = express.Router({ mergeParams: true })
 
 /**
  * @swagger
+ *
  * /user:
  *  get:
+ *    tags:
+ *    - "users"
  *    description: Use to request all customers
  *    responses:
  *      '200':
@@ -56,6 +59,8 @@ const router = express.Router({ mergeParams: true })
  * paths:
  *   /user:
  *     post:
+ *       tags:
+ *       - "users"
  *     description: register new user
  *     parameters:
  *     - in: "body"
@@ -73,6 +78,8 @@ const router = express.Router({ mergeParams: true })
  * @swagger
  * /user/{id}:
  *    get:
+ *      tags:
+ *       - "users"
  *      description: Use to return user by id
  *    parameters:
  *      - name: id
@@ -91,6 +98,8 @@ const router = express.Router({ mergeParams: true })
  * @swagger
  * /user:
  *    put:
+ *      tags:
+ *      - "users"
  *      description: used to update users info
  *    parameters:
  *      - name: customer
@@ -109,6 +118,8 @@ const router = express.Router({ mergeParams: true })
  * @swagger
  * /user/{id}:
  *    delete:
+ *      tags:
+ *      - "users"
  *      description: all to delete a specific user
  *    parameters:
  *      - name: id

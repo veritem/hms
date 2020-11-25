@@ -30,6 +30,7 @@ const router = express.Router({ mergeParams: true })
  *           - INACTIVE
  *
  */
+
 /**
  * @swagger
  * tags:
