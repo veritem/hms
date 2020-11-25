@@ -42,7 +42,6 @@ const router = express.Router({ mergeParams: true })
 
 /**
  * @swagger
- *
  * /user:
  *  get:
  *    tags:
