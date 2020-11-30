@@ -23,7 +23,7 @@ const storage = multer.diskStorage({
 //         cb(null,false);
 //     }
 // }
-const upload = multer({ storage: storage })
+exports.upload = multer({ storage: storage })
 
 exports.createApplyJob = asyncHandler(async (req, res) => {
   const applyJob = await ApplyJob.create(req.body)
@@ -33,10 +33,11 @@ exports.createApplyJob = asyncHandler(async (req, res) => {
   })
 })
 
-router.post('/upload/:id', upload.single('cv'), async (req, res, next) => {
+exports.uploadCV = async (req, res, next) => {
   try {
-    console.log(req.file)
     const applyJobInfo = await ApplyJob.findOne({ _id: req.params.id })
+    console.log(req.file.filename)
+
     if (!applyJobInfo) {
       fs.unlink('assets/cvs/' + req.file.filename, () => {
         return res.status(404).send('id not found')
@@ -48,7 +49,8 @@ router.post('/upload/:id', upload.single('cv'), async (req, res, next) => {
   } catch (error) {
     console.error(error)
   }
-})
+}
+
 exports.getApplyJobs = asyncHandler(async (req, res) => {
   const applyJob = await ApplyJob.find()
   res.status(200).json({
@@ -80,7 +82,7 @@ exports.deleteApplyJob = asyncHandler(async (req, res) => {
   let path = `assets/cvs/${applyJobInfo.cv}`
   fs.exists(path, (exists) => {
     if (exists) {
-      fs.unlink(path, () => {})
+      fs.unlink(path, () => { })
     }
   })
   const applyJob = await ApplyJob.findByIdAndDelete(req.params.id)

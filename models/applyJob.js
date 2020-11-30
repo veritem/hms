@@ -13,8 +13,9 @@ const applyJobSchema = new Schema({
     type: String,
     required: [true, 'Please add the industries field']
   },
-  jobName: {
-
+  jobId: {
+    type: mongoose.Schema.ObjectId,
+    ref: 'Job'
   },
   region: {
     type: String,

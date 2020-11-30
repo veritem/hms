@@ -24,16 +24,7 @@ const router = express.Router({ mergeParams: true })
  *         type: string
  *       role:
  *         type: string
- *         enum:
- *           - manager
- *           - employee
- *           - receptionist
- *           - housekeeper
- *           - customer
- *           - security-services
- *           - medical-service
- *           - accountant
- *         default: customer
+ *         enum: [manager,receptionist,housekeeper,customer,security-services,medical-service,accountant]
  *       password:
  *         type: string
  *       createdAt:
@@ -42,40 +33,51 @@ const router = express.Router({ mergeParams: true })
 
 /**
  * @swagger
- * /user:
+ * /api/v1/users:
  *  get:
  *    tags:
- *    - "users"
- *    description: Use to request all customers
+ *    - users
+ *    description: Use to request all users
  *    responses:
  *      '200':
  *        description: A successful response
  */
 
 /**
- *
  * @swagger
  * paths:
- *   /user:
+ *   /api/v1/users:
  *     post:
  *       tags:
- *       - "users"
+ *       - users
  *     description: register new user
+ *     consumes:
+ *       - "application/json"
+ *       - "application/xml"
+ *     produces:
+ *       - "application/xml"
+ *       - "application/json"
  *     parameters:
- *     - in: "body"
- *       name: "body"
- *       description: "add all required info to user"
- *       required: true
- *       schema:
- *         $ref: "#/definitions/users"
- *       responses:
- *        '201':
- *          description: User added sussesfully
+ *       - in: "body"
+ *         name: "body"
+ *         description: "add all required info to user"
+ *         required: true
+ *         schema:
+ *           $ref: "#/definitions/users"
+ *     responses:
+ *       201:
+ *         description: created
+ *       400:
+ *         description: bad request 
+ *       404:
+ *         description: Not found
+ *       500:
+ *         description: Internal Server error
  */
 
 /**
  * @swagger
- * /user/{id}:
+ * /api/v1/users/{id}:
  *    get:
  *      tags:
  *       - "users"
@@ -95,15 +97,12 @@ const router = express.Router({ mergeParams: true })
 
 /**
  * @swagger
- * /user:
+ * /api/v1/users:
  *    put:
  *      tags:
  *      - "users"
  *      description: used to update users info
  *    parameters:
- *      - name: customer
- *        in: query
- *        description: Name of our customer
  *        required: false
  *        schema:
  *          type: string
@@ -115,7 +114,7 @@ const router = express.Router({ mergeParams: true })
 
 /**
  * @swagger
- * /user/{id}:
+ * /api/v1/users/{id}:
  *    delete:
  *      tags:
  *      - "users"
