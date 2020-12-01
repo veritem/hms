@@ -21,18 +21,6 @@ const app = express()
 dotenv.config({ path: './config/config.env' })
 
 const swaggerOptions = {
-  authAction: {
-    JWT: {
-      name: 'JWT',
-      schema: {
-        type: 'apiKey',
-        in: 'header',
-        name: 'Authorization',
-        description: '',
-      },
-      value: 'Bearer <JWT>',
-    },
-  },
   swaggerDefinition: {
     info: {
       title: 'HMS APIs',
