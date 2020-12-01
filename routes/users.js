@@ -41,8 +41,37 @@ const router = express.Router({ mergeParams: true })
  *    - users
  *    description: Use to request all users
  *    responses:
- *      '200':
+ *     '200':
  *        description: A successful response
+ *     '400':
+ *         description: bad request
+ *     '404':
+ *         description: Not found
+ *     '500':
+ *         description: Internal Server error
+ */
+/**
+ * @swagger
+ * path:
+ * /api/v1/users/{id}:
+ *  get:
+ *    tags:
+ *    - users
+ *    description: Use to request all users
+ *    parameters:
+ *      - name: id
+ *        in: path
+ *        required: true
+ *        description: user id goes here
+ *    responses:
+ *     '200':
+ *        description: A successful response
+ *     '400':
+ *         description: bad request
+ *     '404':
+ *         description: Not found
+ *     '500':
+ *         description: Internal Server error
  */
 
 router.route('/').get(getUsers).post(createUser)
