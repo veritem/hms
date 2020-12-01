@@ -1,5 +1,5 @@
-const express = require('express')
-const {
+import express from 'express'
+import {
   createApplyJob,
   getApplyJobs,
   updateApplyJob,
@@ -7,7 +7,7 @@ const {
   getOneJobApply,
   uploadCV,
   upload,
-} = require('../controllers/applyJob')
+} from '../controllers/applyJob'
 
 const router = express.Router({ mergeParams: true })
 

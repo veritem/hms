@@ -1,11 +1,11 @@
-const express = require('express')
-const {
+import express from 'express'
+import {
   getJobs,
   createJob,
   getJob,
   updateJob,
   deleteJob,
-} = require('../controllers/job')
+} from '../controllers/job'
 
 const router = express.Router({ mergeParams: true })
 
@@ -35,7 +35,7 @@ const router = express.Router({ mergeParams: true })
  *         type: string
  */
 
- /**
+/**
  * @swagger
  * /api/v1/postJob:
  *  get:
@@ -46,7 +46,6 @@ const router = express.Router({ mergeParams: true })
  *      '200':
  *        description: A successful response
  */
-
 
 /**
  * @swagger
@@ -72,7 +71,7 @@ const router = express.Router({ mergeParams: true })
  *      201:
  *        description: created
  *      400:
- *        description: bad request 
+ *        description: bad request
  *      404:
  *        description: Not found
  *      500:
@@ -111,8 +110,7 @@ const router = express.Router({ mergeParams: true })
  *        description: Internal Server error
  */
 
-
- /**
+/**
  * @swagger
  * /api/v1/postJob/{job_id}:
  *   delete:
@@ -140,7 +138,7 @@ const router = express.Router({ mergeParams: true })
  *        description: Internal Server error
  */
 
- /**
+/**
  * @swagger
  * /api/v1/postJob/{job_id}:
  *   get:

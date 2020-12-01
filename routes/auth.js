@@ -74,6 +74,37 @@ const router = express.Router()
  *        description: Internal Server error
  */
 
+/**
+ * @swagger
+ * /api/v1/auth/me:
+ *   get:
+ *    tags:
+ *      - users
+ *    description: Get current logged in user
+ *    consumes:
+ *      - "application/json"
+ *      - "application/xml"
+ *    produces:
+ *      - "application/xml"
+ *      - "application/json"
+ *    parameters:
+ *      - name: Token
+ *        description: Auth token here
+ *        in: parameter
+ *        required: true
+ *    security:
+ *     - jwt: []
+ *    responses:
+ *      201:
+ *        description: created
+ *      400:
+ *        description: bad request
+ *      404:
+ *        description: Not found
+ *      500:
+ *        description: Internal Server error
+ */
+
 router.post('/register', register)
 router.post('/login', login)
 router.get('/me', protect, getMe)

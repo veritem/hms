@@ -1,11 +1,11 @@
-const express = require('express')
-const {
+import express from 'express'
+import {
   getItems,
   createItem,
   getItem,
   updateItem,
   deleteItem,
-} = require('../controllers/items')
+} from '../controllers/items'
 
 const router = express.Router({ mergeParams: true })
 
@@ -27,8 +27,7 @@ const router = express.Router({ mergeParams: true })
  *         enum: [ACTIVE,PENDING,INACTIVE]
  */
 
-
- /**
+/**
  * @swagger
  * /api/v1/items:
  *  get:
@@ -40,7 +39,6 @@ const router = express.Router({ mergeParams: true })
  *        description: A successful response
  */
 
- 
 /**
  * @swagger
  * /api/v1/items:
@@ -65,7 +63,7 @@ const router = express.Router({ mergeParams: true })
  *      201:
  *        description: created
  *      400:
- *        description: bad request 
+ *        description: bad request
  *      404:
  *        description: Not found
  *      500:
@@ -104,7 +102,7 @@ const router = express.Router({ mergeParams: true })
  *        description: Internal Server error
  */
 
- /**
+/**
  * @swagger
  * /api/v1/items/{item_id}:
  *   delete:
@@ -132,8 +130,7 @@ const router = express.Router({ mergeParams: true })
  *        description: Internal Server error
  */
 
- 
- /**
+/**
  * @swagger
  * /api/v1/items/{item_id}:
  *   get:
@@ -160,7 +157,6 @@ const router = express.Router({ mergeParams: true })
  *      500:
  *        description: Internal Server error
  */
-
 
 router.route('/').get(getItems).post(createItem)
 router.route('/:id').get(getItem).put(updateItem).delete(deleteItem)

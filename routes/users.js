@@ -34,11 +34,12 @@ const router = express.Router({ mergeParams: true })
 
 /**
  * @swagger
+ * path:
  * /api/v1/users:
  *  get:
  *    tags:
  *    - users
- *    description: Use to request all users
+ *    description: Use to request all  users
  *    responses:
  *      '200':
  *        description: A successful response

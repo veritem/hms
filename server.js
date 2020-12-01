@@ -21,11 +21,38 @@ const app = express()
 dotenv.config({ path: './config/config.env' })
 
 const swaggerOptions = {
+  authAction: {
+    JWT: {
+      name: 'JWT',
+      schema: {
+        type: 'apiKey',
+        in: 'header',
+        name: 'Authorization',
+        description: '',
+      },
+      value: 'Bearer <JWT>',
+    },
+  },
   swaggerDefinition: {
     info: {
       title: 'HMS APIs',
       version: '1.0.0',
     },
+  },
+  components: {
+    securitySchemes: {
+      jwt: {
+        type: 'http',
+        scheme: 'bearer',
+        in: 'header',
+        bearerFormat: 'JWT',
+      },
+    },
+    security: [
+      {
+        bearerAuth: [],
+      },
+    ],
   },
   apis: ['routes/*.js'],
 }
@@ -38,7 +65,6 @@ import users from './routes/users'
 import auth from './routes/auth'
 import items from './routes/items'
 import postJob from './routes/job'
-import applyJob from './controllers/applyJob'
 import applyJobInformation from './routes/applyJob'
 
 // connect to the database
@@ -51,6 +77,7 @@ app.use(express.json())
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'))
 }
+
 const PORT = process.env.PORT || 5000
 
 const server = app.listen(PORT, () => {
