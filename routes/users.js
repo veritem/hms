@@ -22,12 +22,13 @@ const router = express.Router({ mergeParams: true })
  *         type: string
  *       phone:
  *         type: string
+ *       gender:
+ *         type: string
+ *         enum: [Male,Female]
  *       role:
  *         type: string
  *         enum: [manager,receptionist,housekeeper,customer,security-services,medical-service,accountant]
  *       password:
- *         type: string
- *       createdAt:
  *         type: string
  */
 

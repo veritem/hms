@@ -43,6 +43,37 @@ const router = express.Router()
  *        description: Internal Server error
  */
 
+/**
+ * @swagger
+ * /api/v1/auth/register:
+ *   post:
+ *    tags:
+ *      - users
+ *    description: Register a new account
+ *    consumes:
+ *      - "application/json"
+ *      - "application/xml"
+ *    produces:
+ *      - "application/xml"
+ *      - "application/json"
+ *    parameters:
+ *      - name: body
+ *        description: Your account credentials
+ *        in: body
+ *        required: true
+ *        schema:
+ *          $ref: '#/definitions/users'
+ *    responses:
+ *      201:
+ *        description: created
+ *      400:
+ *        description: bad request
+ *      404:
+ *        description: Not found
+ *      500:
+ *        description: Internal Server error
+ */
+
 router.post('/register', register)
 router.post('/login', login)
 router.get('/me', protect, getMe)
