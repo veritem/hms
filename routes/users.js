@@ -68,7 +68,7 @@ const router = express.Router({ mergeParams: true })
  *       201:
  *         description: created
  *       400:
- *         description: bad request 
+ *         description: bad request
  *       404:
  *         description: Not found
  *       500:
@@ -80,7 +80,7 @@ const router = express.Router({ mergeParams: true })
  * /api/v1/users/{id}:
  *    get:
  *      tags:
- *       - "users"
+ *       - users
  *      description: Use to return user by id
  *    parameters:
  *      - name: id
@@ -100,7 +100,7 @@ const router = express.Router({ mergeParams: true })
  * /api/v1/users:
  *    put:
  *      tags:
- *      - "users"
+ *      - users
  *      description: used to update users info
  *    parameters:
  *        required: false
@@ -117,7 +117,7 @@ const router = express.Router({ mergeParams: true })
  * /api/v1/users/{id}:
  *    delete:
  *      tags:
- *      - "users"
+ *      - users
  *      description: all to delete a specific user
  *    parameters:
  *      - name: id
