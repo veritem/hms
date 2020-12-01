@@ -1,13 +1,13 @@
 const express = require('express')
 const {
-    createApplyJob,
-    getApplyJobs,
-    updateApplyJob,
-    deleteApplyJob,
-    getOneJobApply,
-    uploadCV,
-    upload
-} = require('../controllers/ApplyJob')
+  createApplyJob,
+  getApplyJobs,
+  updateApplyJob,
+  deleteApplyJob,
+  getOneJobApply,
+  uploadCV,
+  upload,
+} = require('../controllers/applyJob')
 
 const router = express.Router({ mergeParams: true })
 
@@ -18,16 +18,16 @@ const router = express.Router({ mergeParams: true })
  *     properties:
  *       first_name:
  *         type: string
- *       last_name: 
+ *       last_name:
  *         type: string
  *       email:
  *         type: string
- *       jobId:  
+ *       jobId:
  *         type: string
  *       region:
  *         type: string
  *       cv:
- *         type: file  
+ *         type: file
  */
 
 /**
@@ -37,11 +37,11 @@ const router = express.Router({ mergeParams: true })
  *     properties:
  *       _id:
  *         type: string
- *       cv: 
- *         type: string 
+ *       cv:
+ *         type: string
  */
 
- /**
+/**
  * @swagger
  * /api/v1/ApplyJob:
  *  get:
@@ -52,7 +52,7 @@ const router = express.Router({ mergeParams: true })
  *      '200':
  *        description: A successful response
  */
- 
+
 /**
  * @swagger
  * /api/v1/ApplyJob:
@@ -77,14 +77,14 @@ const router = express.Router({ mergeParams: true })
  *      201:
  *        description: created
  *      400:
- *        description: bad request 
+ *        description: bad request
  *      404:
  *        description: Not found
  *      500:
  *        description: Internal Server error
  */
 
- /**
+/**
  * @swagger
  * /api/v1/applyJob/{applyJob_id}:
  *   put:
@@ -116,8 +116,7 @@ const router = express.Router({ mergeParams: true })
  *        description: Internal Server error
  */
 
- 
- /**
+/**
  * @swagger
  * /api/v1/applyJob/{applyJob_id}:
  *   delete:
@@ -145,7 +144,7 @@ const router = express.Router({ mergeParams: true })
  *        description: Internal Server error
  */
 
-  /**
+/**
  * @swagger
  * /api/v1/applyJob/{applyJob_id}:
  *   get:
@@ -173,7 +172,6 @@ const router = express.Router({ mergeParams: true })
  *        description: Internal Server error
  */
 
-  
 /**
  * @swagger
  * /api/v1/applyJob/uploadCV/{id}:
@@ -185,7 +183,7 @@ const router = express.Router({ mergeParams: true })
  *      - multipart/form-data
  *    parameters:
  *      - name: cv
- *        in: formData 
+ *        in: formData
  *        type: file
  *        description: The file to upload
  *      - name: id
@@ -195,7 +193,7 @@ const router = express.Router({ mergeParams: true })
  *      201:
  *        description: created
  *      400:
- *        description: bad request 
+ *        description: bad request
  *      404:
  *        description: Not found
  *      500:
@@ -204,7 +202,11 @@ const router = express.Router({ mergeParams: true })
 
 router.route('/').get(getApplyJobs).post(createApplyJob)
 
-router.route('/:id').get(getOneJobApply).put(updateApplyJob).delete(deleteApplyJob);
-router.route('/uploadCv/:id').post([upload.single('cv'),uploadCV]);
+router
+  .route('/:id')
+  .get(getOneJobApply)
+  .put(updateApplyJob)
+  .delete(deleteApplyJob)
+router.route('/uploadCv/:id').post([upload.single('cv'), uploadCV])
 
 module.exports = router
