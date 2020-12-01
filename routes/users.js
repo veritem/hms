@@ -50,6 +50,7 @@ const router = express.Router({ mergeParams: true })
  *     '500':
  *         description: Internal Server error
  */
+
 /**
  * @swagger
  * path:
@@ -72,6 +73,36 @@ const router = express.Router({ mergeParams: true })
  *         description: Not found
  *     '500':
  *         description: Internal Server error
+ */
+
+/**
+ * @swagger
+ * /api/v1/users/{id}:
+ *   put:
+ *    tags:
+ *      - users
+ *    description: Update user info
+ *    consumes:
+ *      - "application/json"
+ *    produces:
+ *      - "application/json"
+ *    parameters:
+ *      - name: id
+ *        in: path
+ *        required: true
+ *      - name: body
+ *        description: Fields for a user id
+ *        in: body
+ *        required: true
+ *        schema:
+ *          $ref: '#/definitions/users'
+ *    responses:
+ *      201:
+ *        description: updated
+ *      404:
+ *        description: Not found
+ *      500:
+ *        description: Internal Server error
  */
 
 router.route('/').get(getUsers).post(createUser)
