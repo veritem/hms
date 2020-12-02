@@ -13,9 +13,10 @@ const router = express.Router({ mergeParams: true })
 
 /**
  * @swagger
- * definitions:
- *   ApplyJob:
- *     properties:
+ * components:
+ *   schemas:
+ *     ApplyJobs:
+ *      properties:
  *       first_name:
  *         type: string
  *       last_name:
@@ -24,10 +25,11 @@ const router = express.Router({ mergeParams: true })
  *         type: string
  *       jobId:
  *         type: string
- *       region:
+ *      region:
  *         type: string
- *       cv:
- *         type: file
+ *      cv:
+ *        type: string
+ *        format: base64
  */
 
 /**
