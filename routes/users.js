@@ -76,6 +76,12 @@ const router = express.Router({ mergeParams: true })
  *         description: Internal Server error
  */
 
+//  securitySchemes:
+//     api_key:
+//       type: apiKey
+//       name: api_key
+//       in: header
+
 /**
  * @swagger
  * /api/v1/users/{id}:

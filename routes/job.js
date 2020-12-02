@@ -68,7 +68,7 @@ const router = express.Router({ mergeParams: true })
  * /api/v1/postJob:
  *  get:
  *    tags:
- *    - "Jobs"
+ *    - [Jobs]
  *    description: Use to request all jobs
  *    responses:
  *      '200':
@@ -80,7 +80,7 @@ const router = express.Router({ mergeParams: true })
  * /api/v1/postJob:
  *   post:
  *    tags:
- *      - Jobs
+ *      - [Jobs]
  *    description: Create a job
  *    consumes:
  *      - "application/json"
@@ -94,7 +94,7 @@ const router = express.Router({ mergeParams: true })
  *        in: body
  *        required: true
  *        schema:
- *          $ref: '#/definitions/Jobs'
+ *          $ref: '#/components/schemas/Jobs'
  *    responses:
  *      201:
  *        description: created
@@ -111,7 +111,7 @@ const router = express.Router({ mergeParams: true })
  * /api/v1/postJob/{job_id}:
  *   put:
  *    tags:
- *      - Jobs
+ *      - [Jobs]
  *    description: Update a job
  *    consumes:
  *      - "application/json"
@@ -128,7 +128,7 @@ const router = express.Router({ mergeParams: true })
  *        in: body
  *        required: true
  *        schema:
- *          $ref: '#/definitions/Jobs'
+ *          $ref: '#/components/schemas/Jobs'
  *    responses:
  *      201:
  *        description: updated
@@ -143,7 +143,7 @@ const router = express.Router({ mergeParams: true })
  * /api/v1/postJob/{job_id}:
  *   delete:
  *    tags:
- *      - Jobs
+ *      - [Jobs]
  *    description: delete a job
  *    consumes:
  *      - "application/json"
@@ -156,7 +156,7 @@ const router = express.Router({ mergeParams: true })
  *        in: path
  *        required: true
  *        schema:
- *          $ref: '#/definitions/Jobs'
+ *          $ref: '#/components/schemas/Jobs'
  *    responses:
  *      201:
  *        description: deleted
@@ -171,7 +171,7 @@ const router = express.Router({ mergeParams: true })
  * /api/v1/postJob/{job_id}:
  *   get:
  *    tags:
- *      - Jobs
+ *      - [Jobs]
  *    description: Update a job
  *    consumes:
  *      - "application/json"
@@ -184,7 +184,7 @@ const router = express.Router({ mergeParams: true })
  *        in: path
  *        required: true
  *        schema:
- *          $ref: '#/definitions/Jobs'
+ *          $ref: '#/components/schemas/Jobs'
  *    responses:
  *      201:
  *        description: deleted

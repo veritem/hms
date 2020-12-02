@@ -27,12 +27,9 @@ const swaggerOptions = {
       title: 'HMS APIs',
       version: '1.0.0',
     },
-    schemes: ['http'],
-    consumes: ['application/json'],
-    produces: ['application/json'],
     servers: [
       {
-        url: 'https://localhost:5000',
+        url: 'http://localhost:5000',
         description: 'Development server',
       },
       {
@@ -41,14 +38,10 @@ const swaggerOptions = {
       },
     ],
   },
-  components: {
-    securitySchemes: {
-      api_key: {
-        type: 'apiKey',
-        name: 'api_key',
-        in: 'header',
-      },
-    },
+  securitySchemes: {
+    type: 'http',
+    scheme: 'bearer',
+    bearerFormat: 'JWT',
   },
   apis: ['routes/*.js'],
 }
@@ -68,7 +61,7 @@ import postJob from './routes/job'
 import applyJobInformation from './routes/applyJob'
 
 // connect to the database
-// connectDB()
+connectDB()
 
 //body parser
 app.use(express.json())
