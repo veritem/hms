@@ -9,11 +9,31 @@ import {
 
 const router = express.Router({ mergeParams: true })
 
+// /**
+//  * @swagger
+//  * components:
+//  *   schemas:
+//  *   Items:
+//  *     properties:
+//  *       itemName:
+//  *         type: string
+//  *       supplier_id:
+//  *         type: string
+//  *       itemType:
+//  *         type: string
+//  *       item_details:
+//  *         type: string
+//  *       status:
+//  *         type: string
+//  *         enum: [ACTIVE,PENDING,INACTIVE]
+//  */
+
 /**
  * @swagger
- * definitions:
- *   Items:
- *     properties:
+ * components:
+ *   schemas:
+ *     Items:
+ *      properties:
  *       itemName:
  *         type: string
  *       supplier_id:
