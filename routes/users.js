@@ -11,9 +11,10 @@ const router = express.Router({ mergeParams: true })
 
 /**
  * @swagger
- * definitions:
- *   users:
- *     properties:
+ * components:
+ *   schemas:
+ *     users:
+ *      properties:
  *       firstName:
  *         type: string
  *       lastName:
@@ -105,35 +106,35 @@ const router = express.Router({ mergeParams: true })
  *        description: Internal Server error
  */
 
-delete (
-  /**
-   * @swagger
-   * /api/v1/users/{id}:
-   *   delete:
-   *    tags:
-   *      - users
-   *    description: delete user
-   *    consumes:
-   *      - "application/json"
-   *    produces:
-   *      - "application/json"
-   *    parameters:
-   *      - name: "id"
-   *        in: path
-   *        required: true
-   *        schema:
-   *          $ref: '#/definitions/users'
-   *    responses:
-   *      201:
-   *        description: deleted
-   *      404:
-   *        description: Not found
-   *      500:
-   *        description: Internal Server error
-   */
+/**
+ * @swagger
+ * /api/v1/users/{id}:
+ *   delete:
+ *    security:
+ *      - Bearer: []
+ *    tags:
+ *      - users
+ *    description: delete user
+ *    consumes:
+ *      - "application/json"
+ *    produces:
+ *      - "application/json"
+ *    parameters:
+ *      - name: "id"
+ *        in: path
+ *        required: true
+ *        schema:
+ *          $ref: '#/definitions/users'
+ *    responses:
+ *      201:
+ *        description: deleted
+ *      404:
+ *        description: Not found
+ *      500:
+ *        description: Internal Server error
+ */
 
-  router.route('/').get(getUsers).post(createUser)
-)
+router.route('/').get(getUsers).post(createUser)
 router.route('/:id').get(getUser).put(updateUser).delete(deleteUser)
 
 module.exports = router

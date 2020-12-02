@@ -22,31 +22,43 @@ dotenv.config({ path: './config/config.env' })
 
 const swaggerOptions = {
   swaggerDefinition: {
+    openapi: '3.0.0',
     info: {
       title: 'HMS APIs',
       version: '1.0.0',
     },
+    schemes: ['http'],
+    consumes: ['application/json'],
+    produces: ['application/json'],
+    servers: [
+      {
+        url: 'https://localhost:5000',
+        description: 'Development server',
+      },
+      {
+        url: 'https://hms-md.herokuapp.com',
+        description: 'Production server',
+      },
+    ],
   },
   components: {
     securitySchemes: {
-      jwt: {
-        type: 'http',
-        scheme: 'bearer',
+      api_key: {
+        type: 'apiKey',
+        name: 'api_key',
         in: 'header',
-        bearerFormat: 'JWT',
       },
     },
-    security: [
-      {
-        bearerAuth: [],
-      },
-    ],
   },
   apis: ['routes/*.js'],
 }
 
 const swaggerDocs = swaggerJSdoc(swaggerOptions)
-app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocs))
+app.use(
+  '/api-docs',
+  swaggerUI.serve,
+  swaggerUI.setup(swaggerDocs, { explorer: true })
+)
 
 //api routes
 import users from './routes/users'
@@ -56,7 +68,7 @@ import postJob from './routes/job'
 import applyJobInformation from './routes/applyJob'
 
 // connect to the database
-connectDB()
+// connectDB()
 
 //body parser
 app.use(express.json())
