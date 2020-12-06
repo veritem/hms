@@ -99,6 +99,8 @@ const router = express.Router()
  *        description: created
  *      400:
  *        description: bad request
+ *      401:
+ *        $ref: '#/components/responses/UnauthorizedError'
  *      404:
  *        description: Not found
  *      500:

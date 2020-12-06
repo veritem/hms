@@ -2,7 +2,7 @@ import mongoose, { Schema } from 'mongoose'
 import jwt from 'jsonwebtoken'
 import bcrypt from 'bcrypt'
 
-const userShema = new Schema({
+const userSchema = new Schema({
   firstName: {
     type: String,
     require: [true, 'Please first name is required'],
@@ -58,9 +58,9 @@ const userShema = new Schema({
 })
 
 /** this method run automatically on save and update to ensure
- * the password get's hashed before saving in the db
+ * the password gets hashed before saving in the db
  */
-userShema.pre('save', async function (next) {
+userSchema.pre('save', async function (next) {
   if (!this.isModified('password')) {
     next()
   }
@@ -73,19 +73,19 @@ userShema.pre('save', async function (next) {
  * This will called in code
  */
 
-userShema.methods.createToken = function () {
-  return jwt.sign({ id: this._id }, process.env.JWT_SCRET, {
+userSchema.methods.createToken = function () {
+  return jwt.sign({ id: this._id }, process.env.JWT_SECRET, {
     expiresIn: process.env.JWT_EXPIRE,
   })
 }
 
 /**
- * Method to match password from hashed one to unhashed one
+ * Method to match password from hashed one to passed one
  * This will called in code
  */
 
-userShema.methods.matchPassowords = async function (enteredPassword) {
+userSchema.methods.matchPasswords = async function (enteredPassword) {
   return await bcrypt.compare(enteredPassword, this.password)
 }
 
-module.exports = mongoose.model('User', userShema)
+module.exports = mongoose.model('User', userSchema)

@@ -57,6 +57,8 @@ const router = express.Router({ mergeParams: true })
  * path:
  * /api/v1/users/{id}:
  *  get:
+ *    security:
+ *    - bearerAuth: []
  *    tags:
  *    - users
  *    description: Use to request all users
@@ -76,16 +78,12 @@ const router = express.Router({ mergeParams: true })
  *         description: Internal Server error
  */
 
-//  securitySchemes:
-//     api_key:
-//       type: apiKey
-//       name: api_key
-//       in: header
-
 /**
  * @swagger
  * /api/v1/users/{id}:
  *   put:
+ *    security:
+ *    - bearerAuth: []
  *    tags:
  *      - users
  *    description: Update user info
@@ -117,7 +115,7 @@ const router = express.Router({ mergeParams: true })
  * /api/v1/users/{id}:
  *   delete:
  *    security:
- *      - Bearer: []
+ *    - bearerAuth: []
  *    tags:
  *      - users
  *    description: delete user
@@ -134,6 +132,8 @@ const router = express.Router({ mergeParams: true })
  *    responses:
  *      201:
  *        description: deleted
+ *      401:
+ *        $ref: '#/components/responses/UnauthorizedError'
  *      404:
  *        description: Not found
  *      500:
