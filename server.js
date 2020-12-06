@@ -13,7 +13,7 @@ dotenv.config({ path: './config/config.env' })
 
 const swaggerOptions = {
   swaggerDefinition: {
-    openapi: '3.0.0',
+    openapi: '3.0.1',
     info: {
       title: 'HMS APIs',
       version: '1.0.0',
@@ -28,21 +28,23 @@ const swaggerOptions = {
         description: 'Production server',
       },
     ],
-  },
-  components: {
-    securitySchemes: {
-      bearerAuth: {
-        type: 'http',
-        scheme: 'bearer',
-        bearerFormat: 'JWT',
+    security: [
+      {
+        bearerAuth: [],
       },
-    },
-    security: {
-      bearerAuth: [],
-    },
-    responses: {
-      UnauthorizedError: {
-        description: 'Access token is missing or invalid',
+    ],
+    components: {
+      securitySchemes: {
+        bearerAuth: {
+          type: 'http',
+          scheme: 'bearer',
+          bearerFormat: 'bearerFormat',
+        },
+      },
+      responses: {
+        UnauthorizedError: {
+          description: 'Access token is missing or invalid',
+        },
       },
     },
   },
@@ -76,19 +78,19 @@ const server = app.listen(PORT, () => {
   )
 })
 
-app.get('/', (req, res) => {
-  res.status(200).json({
-    success: true,
-    body: 'Welcome to hms v1',
-  })
-})
-
 //api routes
 import users from './routes/users'
 import auth from './routes/auth'
 import items from './routes/items'
 import postJob from './routes/job'
 import applyJobInformation from './routes/applyJob'
+
+app.get('/', (req, res) => {
+  res.status(200).json({
+    success: true,
+    body: 'Welcome to hms v1',
+  })
+})
 
 app.use('/api/v1/items', items)
 app.use('/api/v1/users', users)
