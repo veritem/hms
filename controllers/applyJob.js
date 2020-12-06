@@ -16,13 +16,6 @@ const storage = multer.diskStorage({
   },
 })
 
-// const fileFilter = (req,file,cb) => {
-//     if(file.mimetype == 'cv/pdf'){
-//         cb(null,true);
-//     } else {
-//         cb(null,false);
-//     }
-// }
 exports.upload = multer({ storage: storage })
 
 exports.createApplyJob = asyncHandler(async (req, res) => {
@@ -58,6 +51,7 @@ exports.getApplyJobs = asyncHandler(async (req, res) => {
     data: applyJob,
   })
 })
+
 exports.getOneJobApply = asyncHandler(async (req, res) => {
   const applyJob = await ApplyJob.findOne({ _id: req.params.id })
   res.status(200).send({
@@ -65,6 +59,7 @@ exports.getOneJobApply = asyncHandler(async (req, res) => {
     data: applyJob,
   })
 })
+
 exports.updateApplyJob = async (req, res) => {
   const applyJob = await ApplyJob.findByIdAndUpdate(req.params.id, req.body, {
     new: true,
@@ -75,6 +70,7 @@ exports.updateApplyJob = async (req, res) => {
     data: applyJob,
   })
 }
+
 exports.deleteApplyJob = asyncHandler(async (req, res) => {
   const applyJobInfo = await ApplyJob.findOne({ _id: req.params.id })
   if (!applyJobInfo) return res.status(404).send('id not found')
@@ -82,7 +78,7 @@ exports.deleteApplyJob = asyncHandler(async (req, res) => {
   let path = `assets/cvs/${applyJobInfo.cv}`
   fs.exists(path, (exists) => {
     if (exists) {
-      fs.unlink(path, () => { })
+      fs.unlink(path, () => {})
     }
   })
   const applyJob = await ApplyJob.findByIdAndDelete(req.params.id)
