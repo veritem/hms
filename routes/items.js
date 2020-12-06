@@ -6,6 +6,7 @@ import {
   updateItem,
   deleteItem,
 } from '../controllers/items'
+import { authorize, protect } from '../middleware/auth'
 
 const router = express.Router({ mergeParams: true })
 
@@ -59,7 +60,7 @@ const router = express.Router({ mergeParams: true })
  *        in: body
  *        required: true
  *        schema:
- *          $ref: '#/definitions/Items'
+ *          $ref: '#/components/schemas/Items'
  *    responses:
  *      201:
  *        description: created
@@ -93,7 +94,7 @@ const router = express.Router({ mergeParams: true })
  *        in: body
  *        required: true
  *        schema:
- *          $ref: '#/definitions/Items'
+ *          $ref: '#/components/schemas/Items'
  *    responses:
  *      201:
  *        description: updated
@@ -121,7 +122,7 @@ const router = express.Router({ mergeParams: true })
  *        in: path
  *        required: true
  *        schema:
- *          $ref: '#/definitions/Items'
+ *          $ref: '#/components/schemas/Items'
  *    responses:
  *      201:
  *        description: deleted
@@ -149,7 +150,7 @@ const router = express.Router({ mergeParams: true })
  *        in: path
  *        required: true
  *        schema:
- *          $ref: '#/definitions/Items'
+ *          $ref: '#/components/schemas/Items'
  *    responses:
  *      201:
  *        description: deleted
@@ -159,7 +160,10 @@ const router = express.Router({ mergeParams: true })
  *        description: Internal Server error
  */
 
-router.route('/').get(getItems).post(createItem)
+router
+  .route('/')
+  .get(getItems)
+  .post(protect, authorize('housekeeper'), createItem)
 router.route('/:id').get(getItem).put(updateItem).delete(deleteItem)
 
 module.exports = router
