@@ -6,6 +6,7 @@ const {
   updateUser,
   deleteUser,
 } = require('../controllers/users')
+const { protect } = require('../middleware/auth')
 
 const router = express.Router({ mergeParams: true })
 
@@ -43,6 +44,35 @@ const router = express.Router({ mergeParams: true })
  *         type: string
  *       password:
  *         type: string
+ */
+
+/**
+ * @swagger
+ * /api/v1/users:
+ *   post:
+ *    tags:
+ *      - users
+ *    description: Create new user
+ *    consumes:
+ *      - "application/json"
+ *    produces:
+ *      - "application/json"
+ *    requestBody:
+ *      description: New user's credentials
+ *      required: true
+ *      content:
+ *        application/json:
+ *         schema:
+ *          $ref: '#/components/schemas/users'
+ *    responses:
+ *      201:
+ *        description: created
+ *      400:
+ *        description: bad request
+ *      404:
+ *        description: Not found
+ *      500:
+ *        description: Internal Server error
  */
 
 /**
@@ -114,7 +144,7 @@ const router = express.Router({ mergeParams: true })
  *        in: body
  *        required: true
  *        schema:
- *          $ref: '#/definitions/users'
+ *          $ref: '#/components/schemas/users'
  *    responses:
  *      201:
  *        description: updated
@@ -144,7 +174,7 @@ const router = express.Router({ mergeParams: true })
  *        in: path
  *        required: true
  *        schema:
- *          $ref: '#/definitions/users'
+ *          $ref: '#/components/schemas/users'
  *    responses:
  *      201:
  *        description: deleted
@@ -157,6 +187,10 @@ const router = express.Router({ mergeParams: true })
  */
 
 router.route('/').get(getUsers).post(createUser)
-router.route('/:id').get(getUser).put(updateUser).delete(deleteUser)
+router
+  .route('/:id')
+  .get(getUser)
+  .put(protect, updateUser)
+  .delete(protect, deleteUser)
 
 module.exports = router
