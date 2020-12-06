@@ -15,21 +15,13 @@ const router = express.Router()
  *      - "application/json"
  *    produces:
  *      - "application/json"
- *    parameters:
- *      - name: body
- *        description: Your account credentials
- *        in: body
- *        required: true
- *        schema:
- *         type: object
- *         required:
- *           - email
- *           - password
- *         properties:
- *           email:
- *            type: string
- *           password:
- *            type: string
+ *    requestBody:
+ *      description: Log in credentials
+ *      required: true
+ *      content:
+ *        application/json:
+ *         schema:
+ *          $ref: '#/components/schemas/login'
  *    responses:
  *      201:
  *        description: created

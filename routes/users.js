@@ -35,6 +35,18 @@ const router = express.Router({ mergeParams: true })
 
 /**
  * @swagger
+ * components:
+ *   schemas:
+ *     login:
+ *      properties:
+ *       email:
+ *         type: string
+ *       password:
+ *         type: string
+ */
+
+/**
+ * @swagger
  * path:
  * /api/v1/users:
  *  get:
