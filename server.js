@@ -38,10 +38,17 @@ const swaggerOptions = {
       },
     ],
   },
-  securitySchemes: {
-    type: 'http',
-    scheme: 'bearer',
-    bearerFormat: 'JWT',
+  components: {
+    securitySchemes: {
+      bearerAuth: {
+        type: 'http',
+        scheme: 'bearer',
+        bearerFormat: 'JWT',
+      },
+    },
+    security: {
+      bearerAuth: [],
+    },
   },
   apis: ['routes/*.js'],
 }
