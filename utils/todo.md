@@ -18,7 +18,7 @@
    - order_details
    - date_created
 
-- Booking
+- Booking (some how Implemented)
  - Model (bed rooms,conference rooms)
    - user
    - date_created
