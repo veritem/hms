@@ -2,7 +2,7 @@
 
 - [x] user authentication
 - [x] backend first deployment
-- [ ] Documenting already done apis with swagger
+- [x] Documenting already done apis with swagger
 - [ ] Work on Authorization, They are some apis that are needed by some parts of app but not others
 - [ ] Customer recording on entrance
 - [ ] Orders and Bookings
