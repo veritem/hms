@@ -162,8 +162,12 @@ const router = express.Router({ mergeParams: true })
 
 router
   .route('/')
-  .get(getItems)
+  .get(protect, getItems)
   .post(protect, authorize('housekeeper'), createItem)
-router.route('/:id').get(getItem).put(updateItem).delete(deleteItem)
+router
+  .route('/:id')
+  .get(getItem)
+  .put(protect, authorize('housekeeper'), updateItem)
+  .delete(protect, deleteItem)
 
 module.exports = router

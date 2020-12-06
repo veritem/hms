@@ -6,6 +6,7 @@ import {
   updateJob,
   deleteJob,
 } from '../controllers/job'
+import { protect } from '../middleware/auth'
 
 const router = express.Router({ mergeParams: true })
 
@@ -193,7 +194,11 @@ const router = express.Router({ mergeParams: true })
  *      500:
  *        description: Internal Server error
  */
-router.route('/').get(getJobs).post(createJob)
-router.route('/:id').get(getJob).put(updateJob).delete(deleteJob)
+router.route('/').get(getJobs).post(protect, createJob)
+router
+  .route('/:id')
+  .get(getJob)
+  .put(protect, updateJob)
+  .delete(protect, deleteJob)
 
 module.exports = router
