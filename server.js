@@ -59,7 +59,7 @@ app.use(
 )
 
 // connect to the database
-// connectDB()
+connectDB()
 
 //body parser
 app.use(express.json())

@@ -83,13 +83,6 @@ const router = express.Router()
  *    produces:
  *      - "application/xml"
  *      - "application/json"
- *    parameters:
- *      - name: Token
- *        description: Auth token here
- *        in: parameter
- *        required: true
- *    security:
- *     - jwt: []
  *    responses:
  *      201:
  *        description: created
