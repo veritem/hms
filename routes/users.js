@@ -72,6 +72,8 @@ const router = express.Router({ mergeParams: true })
  *        description: A successful response
  *     '400':
  *         description: bad request
+ *     '401':
+ *        description: Authorization information is missing or invalid.
  *     '404':
  *         description: Not found
  *     '500':
@@ -106,6 +108,8 @@ const router = express.Router({ mergeParams: true })
  *        description: updated
  *      404:
  *        description: Not found
+ *      401:
+ *        description: Authorization information is missing or invalid.
  *      500:
  *        description: Internal Server error
  */
@@ -133,7 +137,7 @@ const router = express.Router({ mergeParams: true })
  *      201:
  *        description: deleted
  *      401:
- *        $ref: '#/components/responses/UnauthorizedError'
+ *        description: Authorization information is missing or invalid.
  *      404:
  *        description: Not found
  *      500:

@@ -100,7 +100,7 @@ const router = express.Router()
  *      400:
  *        description: bad request
  *      401:
- *        $ref: '#/components/responses/UnauthorizedError'
+ *        description: Authorization information is missing or invalid.
  *      404:
  *        description: Not found
  *      500:

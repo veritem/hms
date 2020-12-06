@@ -56,13 +56,6 @@ app.use(
   swaggerUI.setup(swaggerDocs, { explorer: true })
 )
 
-//api routes
-import users from './routes/users'
-import auth from './routes/auth'
-import items from './routes/items'
-import postJob from './routes/job'
-import applyJobInformation from './routes/applyJob'
-
 // connect to the database
 connectDB()
 
@@ -89,13 +82,21 @@ app.get('/', (req, res) => {
     body: 'Welcome to hms v1',
   })
 })
+
+//api routes
+import users from './routes/users'
+import auth from './routes/auth'
+import items from './routes/items'
+import postJob from './routes/job'
+import applyJobInformation from './routes/applyJob'
+
 app.use('/api/v1/items', items)
 app.use('/api/v1/users', users)
 app.use('/api/v1/auth', auth)
 app.use('/api/v1/postJob', postJob)
 app.use('/api/v1/applyJob', applyJobInformation)
 
-//for error hadnling
+//for error handling
 app.use(errorHandler)
 
 process.on('unhandledRejection', (err, promise) => {
