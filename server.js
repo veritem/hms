@@ -1,20 +1,11 @@
-// import express from 'express'
-// import dotenv from 'dotenv'
-// import morgan from 'morgan'
-// import connectDB from './config/db'
-// import colors from 'colors'
-// import errorHandler from './middleware/error'
-// import swaggerJSdoc from 'swagger-jsdoc'
-// import swaggerUI from 'swagger-ui-express'
-
-const express = require('express')
-const dotenv = require('dotenv')
-const morgan = require('morgan')
-const connectDB = require('./config/db')
-const colors = require('colors')
-const errorHandler = require('./middleware/error')
-const swaggerJSdoc = require('swagger-jsdoc')
-const swaggerUI = require('swagger-ui-express')
+import express from 'express'
+import dotenv from 'dotenv'
+import morgan from 'morgan'
+import connectDB from './config/db'
+import colors from 'colors'
+import errorHandler from './middleware/error'
+import swaggerJsdoc from 'swagger-jsdoc'
+import swaggerUI from 'swagger-ui-express'
 
 const app = express()
 
@@ -58,7 +49,7 @@ const swaggerOptions = {
   apis: ['routes/*.js'],
 }
 
-const swaggerDocs = swaggerJSdoc(swaggerOptions)
+const swaggerDocs = swaggerJsdoc(swaggerOptions)
 app.use(
   '/api-docs',
   swaggerUI.serve,
