@@ -30,7 +30,7 @@
    - booking_type (bed rooms,conference rooms)
 
 
- - Rooms
+ - Rooms (Implemented)
    - Model
       - Room name
       - status (BOOKED,ACTIVE,IDLE)

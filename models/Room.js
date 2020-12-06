@@ -2,7 +2,7 @@ import mongoose, { Schema } from 'mongoose'
 
 const RoomSchema = new Schema({
   type: {
-    enum: ['single', 'double', 'triple', 'meeting'],
+    enum: ['single', 'double', 'triple', 'meeting', 'other'],
   },
   status: {
     enum: ['ACTIVE', 'BOOKED', 'IDLE'],
