@@ -28,7 +28,7 @@ const router = express.Router({ mergeParams: true })
  *         enum: [Male,Female]
  *       role:
  *         type: string
- *         enum: [manager,receptionist,housekeeper,customer,security-services,medical-service,accountant]
+ *         enum: [customer,manager,receptionist,housekeeper,security-services,medical-service,accountant]
  *       password:
  *         type: string
  */

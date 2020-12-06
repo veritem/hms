@@ -13,9 +13,7 @@ const router = express.Router()
  *    description: Login into the account
  *    consumes:
  *      - "application/json"
- *      - "application/xml"
  *    produces:
- *      - "application/xml"
  *      - "application/json"
  *    parameters:
  *      - name: body
@@ -52,17 +50,15 @@ const router = express.Router()
  *    description: Register a new account
  *    consumes:
  *      - "application/json"
- *      - "application/xml"
  *    produces:
- *      - "application/xml"
  *      - "application/json"
- *    parameters:
- *      - name: body
- *        description: Your account credentials
- *        in: body
- *        required: true
- *        schema:
- *          $ref: '#/definitions/users'
+ *    requestBody:
+ *      description: New user's credentials
+ *      required: true
+ *      content:
+ *        application/json:
+ *         schema:
+ *          $ref: '#/components/schemas/users'
  *    responses:
  *      201:
  *        description: created
