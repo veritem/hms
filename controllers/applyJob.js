@@ -16,14 +16,7 @@ const storage = multer.diskStorage({
   },
 })
 
-// const fileFilter = (req,file,cb) => {
-//     if(file.mimetype == 'cv/pdf'){
-//         cb(null,true);
-//     } else {
-//         cb(null,false);
-//     }
-// }
-const upload = multer({ storage: storage })
+exports.upload = multer({ storage: storage })
 
 exports.createApplyJob = asyncHandler(async (req, res) => {
   const applyJob = await ApplyJob.create(req.body)
@@ -33,10 +26,11 @@ exports.createApplyJob = asyncHandler(async (req, res) => {
   })
 })
 
-router.post('/upload/:id', upload.single('cv'), async (req, res, next) => {
+exports.uploadCV = async (req, res, next) => {
   try {
-    console.log(req.file)
     const applyJobInfo = await ApplyJob.findOne({ _id: req.params.id })
+    console.log(req.file.filename)
+
     if (!applyJobInfo) {
       fs.unlink('assets/cvs/' + req.file.filename, () => {
         return res.status(404).send('id not found')
@@ -48,7 +42,8 @@ router.post('/upload/:id', upload.single('cv'), async (req, res, next) => {
   } catch (error) {
     console.error(error)
   }
-})
+}
+
 exports.getApplyJobs = asyncHandler(async (req, res) => {
   const applyJob = await ApplyJob.find()
   res.status(200).json({
@@ -56,6 +51,7 @@ exports.getApplyJobs = asyncHandler(async (req, res) => {
     data: applyJob,
   })
 })
+
 exports.getOneJobApply = asyncHandler(async (req, res) => {
   const applyJob = await ApplyJob.findOne({ _id: req.params.id })
   res.status(200).send({
@@ -63,6 +59,7 @@ exports.getOneJobApply = asyncHandler(async (req, res) => {
     data: applyJob,
   })
 })
+
 exports.updateApplyJob = async (req, res) => {
   const applyJob = await ApplyJob.findByIdAndUpdate(req.params.id, req.body, {
     new: true,
@@ -73,6 +70,7 @@ exports.updateApplyJob = async (req, res) => {
     data: applyJob,
   })
 }
+
 exports.deleteApplyJob = asyncHandler(async (req, res) => {
   const applyJobInfo = await ApplyJob.findOne({ _id: req.params.id })
   if (!applyJobInfo) return res.status(404).send('id not found')

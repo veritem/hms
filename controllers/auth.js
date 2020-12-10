@@ -1,12 +1,9 @@
 import ErrorResponse from '../utils/ErrorResponse'
 import asyncHandler from '../middleware/async'
+import { param } from '../routes/users'
 const User = require('../models/User')
 // import User from '../models/User'
 
-/**
- * POST
- * desc: user registration
- */
 exports.register = asyncHandler(async (req, res, next) => {
   const { firstName, lastName, email, phone, gender, role, password } = req.body
 
@@ -33,14 +30,15 @@ exports.login = asyncHandler(async (req, res, next) => {
   if (!user) return next(new ErrorResponse('Invalid email or password', 401))
 
   // check if password matches
-  const isMatch = await user.matchPassowords(password)
+  const isMatch = await user.matchPasswords(password)
 
   if (!isMatch) return next(new ErrorResponse('Invalid email or password', 401))
 
   sendTokenResponse(user, 200, res)
 })
 
-//get currentloggedin user
+//get currentLogged user
+
 exports.getMe = asyncHandler(async (req, res, next) => {
   res.status(200).json({
     success: true,
@@ -49,7 +47,7 @@ exports.getMe = asyncHandler(async (req, res, next) => {
 })
 
 /**
- * this is resuable function to return auth-tokens
+ * this is reuseable function to return auth-tokens
  * @param { user object} user
  * @param { statuscode } statusCode
  * @param { json_response to the user} res

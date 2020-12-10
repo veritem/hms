@@ -19,6 +19,10 @@ const applyJobSchema = new Schema({
 		unique: true,
 		required: true,
   },
+  jobId: {
+    type: mongoose.Schema.ObjectId,
+    ref: 'Job'
+  },
   region: {
     type: String,
     required: [true,'Please add the region of the work']
