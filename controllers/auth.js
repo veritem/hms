@@ -14,7 +14,7 @@ exports.register = asyncHandler(async (req, res, next) => {
     phone,
     gender,
     role,
-    password,
+    password
   })
 
   sendTokenResponse(user, 200, res)
@@ -56,3 +56,4 @@ const sendTokenResponse = (user, statusCode, res) => {
   const token = user.createToken()
   res.status(statusCode).json({ success: true, token })
 }
+
