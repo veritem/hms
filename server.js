@@ -84,6 +84,7 @@ import auth from './routes/auth'
 import items from './routes/items'
 import postJob from './routes/job'
 import applyJobInformation from './routes/applyJob'
+import customer from './routes/customer'
 
 app.get('/', (req, res) => {
   res.status(200).json({
@@ -91,7 +92,7 @@ app.get('/', (req, res) => {
     body: 'Welcome to hms v1',
   })
 })
-
+app.use('/api/v1/customers',customer)
 app.use('/api/v1/items', items)
 app.use('/api/v1/users', users)
 app.use('/api/v1/auth', auth)
