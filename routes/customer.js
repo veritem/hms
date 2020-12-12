@@ -9,7 +9,7 @@ router.route('/').get(getCustomers).post(createCustomer)
  * @swagger
  * components:
  *   schemas:
- *     customer:
+ *     users:
  *      properties:
  *       firstName:
  *         type: string
