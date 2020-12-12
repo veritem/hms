@@ -1,8 +1,5 @@
 const express = require('express')
-const {
-    getCustomers,
-    createCustomer
-} = require('../controllers/customer')
+const { getCustomers, createCustomer } = require('../controllers/customer')
 const { protect } = require('../middleware/auth')
 
 const router = express.Router({ mergeParams: true })
@@ -12,7 +9,7 @@ router.route('/').get(getCustomers).post(createCustomer)
  * @swagger
  * components:
  *   schemas:
- *     users:
+ *     customer:
  *      properties:
  *       firstName:
  *         type: string

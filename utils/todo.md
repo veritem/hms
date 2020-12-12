@@ -36,3 +36,6 @@
       - status (BOOKED,ACTIVE,IDLE)
       - description
       - room_type (bed room,conference)
+
+
+Customer recording on the entrance database model problem
