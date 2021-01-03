@@ -8,7 +8,7 @@
 - [ ] Orders and Bookings
 - [ ] Employees management
 - [ ] User reviews Management
-- [ ] Hotels properties Management
+- [x] Hotels properties Management
 - [ ] Service Payment Processing and Managements
 
 
@@ -17,6 +17,11 @@
    - user(customer)
    - order_details
    - date_created
+
+  - Products
+    - name
+    - price
+    - stock
 
 - Booking (some how Implemented)
  - Model (bed rooms,conference rooms)
@@ -36,6 +41,14 @@
       - status (BOOKED,ACTIVE,IDLE)
       - description
       - room_type (bed room,conference)
+      - number of people
 
 
-Customer recording on the entrance database model problem
+- Customer recording on the entrance database model problem
+   - Model
+      - names
+      - sex
+      - age
+      - National id/ passport
+      - residence
+      - created_at
