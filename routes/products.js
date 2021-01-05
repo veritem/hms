@@ -7,25 +7,14 @@ const router = express.Router()
  *   schemas:
  *     Products:
  *      properties:
- *       JobName:
+ *       name:
  *         type: string
- *       jobCategory:
+ *       description:
  *         type: string
- *       JobType:
- *         type: string
- *       industries:
- *         type: string
- *       employment_type:
- *         type: string
- *         enum: ['full-time','part-time','casual','fixed-term','shift-workers','daily-hire-and-weekly-hire','probation','apprentices-and-trainees','out-workers']
- *       region:
- *         type: string
- *       experience_level:
- *         type: string
- *       education_level:
- *         type: string
- *       number_of_positions:
- *         type: string
+ *       price:
+ *         type: number
+ *       inStock:
+ *         type: number
  */
 
 module.exports = router
