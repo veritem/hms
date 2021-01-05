@@ -10,7 +10,7 @@
 
 - MongoDB
 
-- Reactjs
+- Angular
 
 > Running the app localy do
 
