@@ -2,6 +2,7 @@ import express from 'express'
 import advancedResults from '../middleware/advancedResults'
 const router = express.Router()
 import { getProducts } from '../controllers/product'
+import Product from '../models/Product'
 
 /**
  * @swagger
@@ -19,6 +20,6 @@ import { getProducts } from '../controllers/product'
  *         type: number
  */
 
-router.route('/').get(advancedResults('Product'), getProducts)
+router.route('/').get(advancedResults(Product), getProducts)
 
 module.exports = router
