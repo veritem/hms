@@ -6,7 +6,7 @@
 
 ### Tech stack
 
-- Nodejs / Expressjs
+- Nodejs / EXPRESS JS
 
 - MongoDB
 
