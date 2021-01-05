@@ -1,5 +1,7 @@
 import express from 'express'
+import advancedResults from '../middleware/advancedResults'
 const router = express.Router()
+import { getProducts } from '../controllers/product'
 
 /**
  * @swagger
@@ -16,5 +18,7 @@ const router = express.Router()
  *       inStock:
  *         type: number
  */
+
+router.route('/').get(advancedResults('Product'), getProducts)
 
 module.exports = router
