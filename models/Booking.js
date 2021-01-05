@@ -4,9 +4,6 @@ const BookingSchema = new Schema({
   number: {
     type: String,
   },
-  room_description: {
-    type: String,
-  },
   date_from: {
     type: Date,
   },
@@ -22,6 +19,12 @@ const BookingSchema = new Schema({
       },
     },
   ],
+  number_of_adults: {
+    type: Number,
+  },
+  number_of_children: {
+    type: Number,
+  },
   status: {
     enum: ['ACTIVE', 'PENDING', 'INACTIVE', 'FINISHED'],
     default: 'INACTIVE',

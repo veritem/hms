@@ -32,7 +32,6 @@
    - date of arrival
    - number of adults
    - number of children
-   - booking_type (bed rooms,conference rooms)
 
 
  - Rooms (Implemented)
