@@ -9,6 +9,11 @@ const OrderSchema = new Schema({
     type: Date,
     default: Date.now(),
   },
+  order_details: [
+    {
+      product: {},
+    },
+  ],
 })
 
 module.exports = mongoose.model('Order', OrderSchema)
