@@ -40,10 +40,15 @@ exports.updateProduct = asyncHandler(async (req, res, next) => {
 
   res.status(200).json({ success: true, data: newProduct })
 })
+
 exports.deleteProduct = asyncHandler(async (req, res, next) => {
   const product = await Product.findById(req.params.id)
-  if (!product)
+
+  if (!product) {
     new ErrorResponse(`No product found with id ${req.params.id}`, 404)
+  }
+
   await product.remove()
+
   res.status(200).json({ success: true, data: {} })
 })

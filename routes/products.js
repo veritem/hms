@@ -128,6 +128,32 @@ import Product from '../models/Product'
  *        description: Internal Server error
  */
 
+/**
+ * @swagger
+ * /api/v1/products/{product_id}:
+ *   delete:
+ *    tags:
+ *      - [Products]
+ *    description: delete a job
+ *    consumes:
+ *      - "application/json"
+ *      - "application/xml"
+ *    produces:
+ *      - "application/xml"
+ *      - "application/json"
+ *    parameters:
+ *      - name: "id"
+ *        in: path
+ *        required: true
+ *    responses:
+ *      201:
+ *        description: deleted
+ *      404:
+ *        description: Not found
+ *      500:
+ *        description: Internal Server error
+ */
+
 router.route('/').get(advancedResults(Product), getProducts).post(addProduct)
 router.route('/:id').get(getProduct).put(updateProduct).delete(deleteProduct)
 
