@@ -21,6 +21,11 @@ exports.getProduct = asyncHandler(async (req, res, next) => {
   })
 })
 
-exports.addProduct = asyncHandler(async (req, res, next) => {})
+exports.addProduct = asyncHandler(async (req, res, next) => {
+  console.log(req.body)
+  const product = await Product.create(req.body)
+  res.status(201).json({ data: product, success: true })
+})
+
 exports.updateProduct = asyncHandler(async (req, res, next) => {})
 exports.deleteProduct = asyncHandler(async (req, res, next) => {})
