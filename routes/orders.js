@@ -1,4 +1,10 @@
 import express from 'express'
+import {
+  getOrders,
+  getOrder,
+  updateOrder,
+  deleteOrder,
+} from '../controllers/orders'
 const router = express.Router()
 
 /**
@@ -130,5 +136,8 @@ const router = express.Router()
  *      500:
  *        description: Internal Server error
  */
+
+router.route('/').get(getOrders)
+router.route('/:id').get(getOrder).put(updateOrder).delete(deleteOrder)
 
 module.exports = router

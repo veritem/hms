@@ -86,6 +86,7 @@ import postJob from './routes/job'
 import applyJobInformation from './routes/applyJob'
 import customer from './routes/customer'
 import product from './routes/products'
+import orders from './routes/orders'
 
 app.get('/', (req, res) => {
   res.status(200).json({
@@ -94,6 +95,7 @@ app.get('/', (req, res) => {
   })
 })
 
+app.use('/api/v1/orders', orders)
 app.use('/api/v1/products', product)
 app.use('/api/v1/customers', customer)
 app.use('/api/v1/items', items)
