@@ -20,3 +20,7 @@ exports.getProduct = asyncHandler(async (req, res, next) => {
     data: product,
   })
 })
+
+exports.addProduct = asyncHandler(async (req, res, next) => {})
+exports.updateProduct = asyncHandler(async (req, res, next) => {})
+exports.deleteProduct = asyncHandler(async (req, res, next) => {})

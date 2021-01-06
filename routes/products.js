@@ -1,7 +1,13 @@
 import express from 'express'
 import advancedResults from '../middleware/advancedResults'
 const router = express.Router()
-import { getProducts, getProduct } from '../controllers/product'
+import {
+  getProducts,
+  getProduct,
+  addProduct,
+  updateProduct,
+  deleteProduct,
+} from '../controllers/product'
 import Product from '../models/Product'
 
 /**
@@ -58,6 +64,7 @@ import Product from '../models/Product'
  *        description: Internal Server error
  */
 
-router.route('/').get(advancedResults(Product), getProducts)
-router.route('/:id').get(getProduct)
+router.route('/').get(advancedResults(Product), getProducts).post(addProduct)
+router.route('/:id').get(getProduct).put(updateProduct).delete(deleteProduct)
+
 module.exports = router
