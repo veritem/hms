@@ -5,6 +5,8 @@ import {
   updateOrder,
   deleteOrder,
 } from '../controllers/orders'
+import advancedResults from '../middleware/advancedResults'
+import Orders from '../models/Orders'
 const router = express.Router()
 
 /**
@@ -137,7 +139,7 @@ const router = express.Router()
  *        description: Internal Server error
  */
 
-router.route('/').get(getOrders)
+router.route('/').get(advancedResults(Orders, 'user'))
 router.route('/:id').get(getOrder).put(updateOrder).delete(deleteOrder)
 
 module.exports = router
