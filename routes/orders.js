@@ -1,37 +1,36 @@
 import express from 'express'
-import advancedResults from '../middleware/advancedResults'
 import {
-  getProducts,
-  getProduct,
-  addProduct,
-  updateProduct,
-  deleteProduct,
-} from '../controllers/product'
-import Product from '../models/Product'
+  getOrders,
+  getOrder,
+  updateOrder,
+  deleteOrder,
+} from '../controllers/orders'
+import advancedResults from '../middleware/advancedResults'
+import Orders from '../models/Orders'
 const router = express.Router()
 
 /**
  * @swagger
  * components:
  *   schemas:
- *     Products:
+ *     Orders:
  *      properties:
- *       name:
+ *       user:
  *         type: string
- *       description:
+ *       order_details:
  *         type: string
- *       price:
- *         type: number
- *       inStock:
- *         type: number
+ *       isPaid:
+ *         type: boolean
+ *       created_at:
+ *         type: string
  */
 
 /**
  * @swagger
- * /api/v1/products:
+ * /api/v1/orders:
  *  get:
  *    tags:
- *    - [Products]
+ *    - [Orders]
  *    description: Use to request all products
  *    responses:
  *      '200':
@@ -40,36 +39,22 @@ const router = express.Router()
 
 /**
  * @swagger
- * /api/v1/products/{product_id}:
- *   get:
+ * /api/v1/orders/{order_id}:
+ *  get:
  *    tags:
- *      - [Products]
- *    description: Get product by id
- *    consumes:
- *      - "application/json"
- *      - "application/xml"
- *    produces:
- *      - "application/xml"
- *      - "application/json"
- *    parameters:
- *      - name: job_id
- *        in: path
- *        required: true
+ *    - [Orders]
+ *    description: Use to request all products
  *    responses:
- *      201:
- *        description: updated
- *      404:
- *        description: Not found
- *      500:
- *        description: Internal Server error
+ *      '200':
+ *        description: A successful response
  */
 
 /**
  * @swagger
- * /api/v1/products:
+ * /api/v1/orders:
  *   post:
  *    tags:
- *      - [Products]
+ *      - [Orders]
  *    description: Create a product
  *    consumes:
  *      - "application/json"
@@ -82,7 +67,7 @@ const router = express.Router()
  *        content:
  *         application/json:
  *            schema:
- *              $ref: '#/components/schemas/Products'
+ *              $ref: '#/components/schemas/Orders'
  *    responses:
  *      201:
  *        description: created
@@ -96,10 +81,10 @@ const router = express.Router()
 
 /**
  * @swagger
- * /api/v1/products/{product_id}:
+ * /api/v1/orders/{order_id}:
  *   put:
  *    tags:
- *      - [Products]
+ *      - [Orders]
  *    description: Create a product
  *    consumes:
  *      - "application/json"
@@ -116,7 +101,7 @@ const router = express.Router()
  *        content:
  *         application/json:
  *            schema:
- *              $ref: '#/components/schemas/Products'
+ *              $ref: '#/components/schemas/Orders'
  *    responses:
  *      201:
  *        description: created
@@ -130,11 +115,11 @@ const router = express.Router()
 
 /**
  * @swagger
- * /api/v1/products/{product_id}:
+ * /api/v1/orders/{order_id}:
  *   delete:
  *    tags:
- *      - [Products]
- *    description: delete a job
+ *      - [Orders]
+ *    description: delete an order
  *    consumes:
  *      - "application/json"
  *      - "application/xml"
@@ -154,7 +139,7 @@ const router = express.Router()
  *        description: Internal Server error
  */
 
-router.route('/').get(advancedResults(Product), getProducts).post(addProduct)
-router.route('/:id').get(getProduct).put(updateProduct).delete(deleteProduct)
+router.route('/').get(advancedResults(Orders, 'user'))
+router.route('/:id').get(getOrder).put(updateOrder).delete(deleteOrder)
 
 module.exports = router
