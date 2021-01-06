@@ -1,7 +1,7 @@
 import express from 'express'
 import advancedResults from '../middleware/advancedResults'
 const router = express.Router()
-import { getProducts } from '../controllers/product'
+import { getProducts, getProduct } from '../controllers/product'
 import Product from '../models/Product'
 
 /**
@@ -31,6 +31,33 @@ import Product from '../models/Product'
  *      '200':
  *        description: A successful response
  */
-router.route('/').get(advancedResults(Product), getProducts)
 
+/**
+ * @swagger
+ * /api/v1/products/{product_id}:
+ *   get:
+ *    tags:
+ *      - [Products]
+ *    description: Get product by id
+ *    consumes:
+ *      - "application/json"
+ *      - "application/xml"
+ *    produces:
+ *      - "application/xml"
+ *      - "application/json"
+ *    parameters:
+ *      - name: job_id
+ *        in: path
+ *        required: true
+ *    responses:
+ *      201:
+ *        description: updated
+ *      404:
+ *        description: Not found
+ *      500:
+ *        description: Internal Server error
+ */
+
+router.route('/').get(advancedResults(Product), getProducts)
+router.route('/:id').get(getProduct)
 module.exports = router
