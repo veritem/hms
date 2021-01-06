@@ -1,6 +1,6 @@
 import asyncHandler from '../middleware/async'
 import Product from '../models/Product'
-import ErrorResponse from '../middleware/error'
+import ErrorResponse from '../utils/ErrorResponse'
 
 exports.getProducts = asyncHandler(async (req, res, next) => {
   res.status(200).json(res.advancedResults)

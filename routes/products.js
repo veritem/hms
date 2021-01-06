@@ -94,6 +94,40 @@ import Product from '../models/Product'
  *        description: Internal Server error
  */
 
+/**
+ * @swagger
+ * /api/v1/products/{product_id}:
+ *   put:
+ *    tags:
+ *      - [Products]
+ *    description: Create a product
+ *    consumes:
+ *      - "application/json"
+ *      - "application/xml"
+ *    produces:
+ *      - "application/xml"
+ *      - "application/json"
+ *    parameters:
+ *      - name: job_id
+ *        in: path
+ *        required: true
+ *    requestBody:
+ *        required: true
+ *        content:
+ *         application/json:
+ *            schema:
+ *              $ref: '#/components/schemas/Products'
+ *    responses:
+ *      201:
+ *        description: created
+ *      400:
+ *        description: bad request
+ *      404:
+ *        description: Not found
+ *      500:
+ *        description: Internal Server error
+ */
+
 router.route('/').get(advancedResults(Product), getProducts).post(addProduct)
 router.route('/:id').get(getProduct).put(updateProduct).delete(deleteProduct)
 
