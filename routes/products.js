@@ -1,6 +1,5 @@
 import express from 'express'
 import advancedResults from '../middleware/advancedResults'
-const router = express.Router()
 import {
   getProducts,
   getProduct,
@@ -9,6 +8,7 @@ import {
   deleteProduct,
 } from '../controllers/product'
 import Product from '../models/Product'
+const router = express.Router()
 
 /**
  * @swagger

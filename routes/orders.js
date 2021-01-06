@@ -81,7 +81,7 @@ const router = express.Router()
 
 /**
  * @swagger
- * /api/v1/products/{order_id}:
+ * /api/v1/orders/{order_id}:
  *   put:
  *    tags:
  *      - [Orders]
@@ -115,7 +115,7 @@ const router = express.Router()
 
 /**
  * @swagger
- * /api/v1/products/{order_id}:
+ * /api/v1/orders/{order_id}:
  *   delete:
  *    tags:
  *      - [Orders]
