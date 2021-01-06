@@ -1,5 +1,6 @@
 import asyncHandler from '../middleware/async'
 import Product from '../models/Product'
+import ErrorResponse from '../middleware/error'
 
 exports.getProducts = asyncHandler(async (req, res, next) => {
   res.status(200).json(res.advancedResults)
@@ -22,10 +23,21 @@ exports.getProduct = asyncHandler(async (req, res, next) => {
 })
 
 exports.addProduct = asyncHandler(async (req, res, next) => {
-  console.log(req.body)
   const product = await Product.create(req.body)
   res.status(201).json({ data: product, success: true })
 })
 
-exports.updateProduct = asyncHandler(async (req, res, next) => {})
+exports.updateProduct = asyncHandler(async (req, res, next) => {
+  const product = await Product.findById(req.params.id)
+
+  if (!product)
+    new ErrorResponse(`No product found with id ${req.params.id}`, 404)
+
+  const newProduct = await Product.findOneAndUpdate(req.params.id, req.body, {
+    new: true,
+    runValidators: true,
+  })
+
+  res.status(200).json({ success: true, data: newProduct })
+})
 exports.deleteProduct = asyncHandler(async (req, res, next) => {})
